@@ -35,6 +35,7 @@ with db() as conn:
 # REGISTER
 # =========================
 @app.route("/", methods=["GET", "POST"])
+@app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
         user = request.form["username"]
@@ -49,6 +50,7 @@ def register():
         return redirect("/login")
 
     return render_template("register.html")
+
 
 # =========================
 # LOGIN
@@ -154,5 +156,6 @@ def logout():
 
 if __name__ == "__main__":
     app.run()
+
 
 
