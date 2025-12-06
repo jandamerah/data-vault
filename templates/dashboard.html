@@ -9,7 +9,6 @@
 
 <div class="app fade">
 
-    <!-- SIDEBAR -->
     <div class="sidebar">
         <h2>DataVault</h2>
         <a onclick="showHome()">Home</a>
@@ -18,10 +17,8 @@
         <a href="/logout" class="logout">Logout</a>
     </div>
 
-    <!-- MAIN -->
     <div class="main">
 
-        <!-- ================= HOME ================= -->
         <div id="home" class="page">
             <h1>Account Data Storage</h1>
             <br>
@@ -40,7 +37,6 @@
 
             <br>
 
-            <!-- ===== STATISTICS ===== -->
             <div class="stats-box">
                 <div class="stat">Total Accounts<br><b id="totalCount">0</b></div>
                 <div class="stat">Mobile Legends<br><b id="mlCount">0</b></div>
@@ -49,14 +45,12 @@
                 <div class="stat">Email<br><b id="emailCount">0</b></div>
             </div>
 
-            <!-- ===== QUICK ACTION ===== -->
             <div class="quick-action">
                 <button onclick="showAdd()">Add Game Account</button>
                 <button onclick="showAdd()">Add Email Account</button>
                 <button onclick="showInfo()">View All Accounts</button>
             </div>
-
-            <!-- ===== SECURITY TIPS ===== -->
+>
             <div class="tips">
                 <h3>Security Tips</h3>
                 <ul>
@@ -68,7 +62,6 @@
             </div>
         </div>
 
-        <!-- ================= ACCOUNTS ================= -->
         <div id="info" class="page">
             <h1>Account Data</h1>
 
@@ -139,7 +132,6 @@
             {% endfor %}
         </div>
 
-        <!-- ================= ADD DATA ================= -->
         <div id="add" class="page">
             <h1>Add Game Account</h1>
 
@@ -181,7 +173,6 @@
     </div>
 </div>
 
-<!-- ================= SCRIPT ================= -->
 <script>
 function showHome(){ setActive("home") }
 function showInfo(){ setActive("info") }
@@ -192,7 +183,6 @@ function setActive(id){
     document.getElementById(id).style.display = "block"
 }
 
-/* INIT PAGE */
 setActive("home")
 
 function togglePass(btn){
@@ -214,7 +204,6 @@ function toggleEmailPass(){
     f.type = f.type === "password" ? "text" : "password"
 }
 
-/* SEARCH */
 function searchData(){
     let input = document.getElementById("searchInput").value.toLowerCase()
     let cards = document.getElementsByClassName("data-card")
@@ -225,7 +214,6 @@ function searchData(){
     }
 }
 
-/* STAT COUNTER (PAKAI data-game) */
 let allCards   = document.querySelectorAll(".data-card")
 let mlCards    = document.querySelectorAll(".data-card[data-game='MobileLegends']")
 let pubgCards  = document.querySelectorAll(".data-card[data-game='PUBG']")
@@ -241,4 +229,5 @@ document.getElementById("emailCount").innerText  = emailCards.length
 
 </body>
 </html>
+
 
