@@ -1,60 +1,62 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: Arial;
     box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
 
 body {
-    background: #0f172a;
+    background: linear-gradient(120deg, #020617, #0f172a);
+    color: white;
+    min-height: 100vh;
 }
 
+/* ================= APP WRAPPER ================= */
 .app {
     display: flex;
-    height: 100vh;
+    min-height: 100vh;
 }
 
-/* SIDEBAR */
+/* ================= SIDEBAR ================= */
 .sidebar {
     width: 220px;
-    background: #020617;
+    background: rgba(255,255,255,0.05);
     padding: 20px;
     display: flex;
     flex-direction: column;
+    gap: 15px;
 }
 
 .sidebar h2 {
-    color: white;
+    margin-bottom: 20px;
     text-align: center;
-    margin-bottom: 30px;
 }
 
 .sidebar a {
-    text-decoration: none;
     color: white;
-    padding: 12px;
-    margin-bottom: 8px;
-    background: #1e293b;
-    border-radius: 8px;
-    transition: 0.2s;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.07);
+    text-align: center;
+    cursor: pointer;
 }
 
 .sidebar a:hover {
-    background: #6366f1;
+    background: #6c63ff;
 }
 
 .logout {
-    margin-top: auto;
-    background: #dc2626 !important;
+    background: #ef4444 !important;
 }
 
-/* MAIN */
+/* ================= MAIN ================= */
 .main {
     flex: 1;
     padding: 30px;
-    color: white;
 }
 
+/* ================= PAGE ================= */
 .page {
     display: none;
 }
@@ -63,192 +65,195 @@ body {
     display: block;
 }
 
-.card {
-    background: #1e293b;
+/* ================= HOME ================= */
+#home h1 {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+#home p {
+    font-size: 15px;
+    opacity: 0.9;
+    line-height: 1.6;
+}
+
+/* ================= STATS ================= */
+.stats-box {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin: 25px 0;
+}
+
+.stat {
+    background: rgba(255,255,255,0.08);
+    padding: 18px;
+    border-radius: 14px;
+    text-align: center;
+}
+
+/* ================= QUICK ACTION ================= */
+.quick-action {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.quick-action button {
+    padding: 14px;
+    border-radius: 12px;
+    background: #6c63ff;
+    border: none;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+/* ================= SECURITY TIPS ================= */
+.tips {
+    background: rgba(255,255,255,0.06);
+    padding: 16px 20px;
+    border-radius: 16px;
+}
+
+.tips ul {
+    padding-left: 18px;
+}
+
+/* ================= SEARCH ================= */
+.search {
     padding: 12px;
+    width: 300px;
     border-radius: 10px;
+    border: none;
     margin-top: 10px;
 }
 
-/* FORM */
-input, button {
+/* ================= CARD ================= */
+.card {
+    background: rgba(255,255,255,0.08);
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+}
+
+.card button {
+    margin-top: 8px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    background: #6c63ff;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.del {
+    background: #ef4444;
+    padding: 6px 10px;
+    border-radius: 6px;
+    color: white;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+/* ================= FORM ================= */
+form {
+    max-width: 400px;
+    background: rgba(255,255,255,0.06);
+    padding: 20px;
+    border-radius: 16px;
+}
+
+form input,
+form select {
     width: 100%;
     padding: 12px;
-    margin-top: 10px;
-    border-radius: 8px;
+    margin-bottom: 12px;
+    border-radius: 10px;
     border: none;
 }
 
-button {
-    background: #6366f1;
+form button {
+    width: 100%;
+    padding: 12px;
+    background: #6c63ff;
+    border: none;
+    border-radius: 10px;
     color: white;
-    font-weight: bold;
 }
 
-/* RESPONSIVE HP */
+/* ================= LOGIN ================= */
+.login-container {
+    width: 100%;
+    max-width: 350px;
+    background: rgba(255,255,255,0.08);
+    padding: 25px;
+    border-radius: 18px;
+    margin: 80px auto;
+    text-align: center;
+}
+
+/* ================= MOBILE MODE ================= */
 @media (max-width: 768px) {
+
     .app {
         flex-direction: column;
     }
 
     .sidebar {
         width: 100%;
+        height: auto;
+        position: fixed;
+        bottom: 0;
+        left: 0;
         flex-direction: row;
         justify-content: space-around;
+        padding: 10px;
     }
 
     .sidebar h2 {
         display: none;
     }
 
-    .logout {
-        margin-top: 0;
+    .sidebar a {
+        font-size: 12px;
+        padding: 8px 10px;
     }
-}
 
-/* ==== LOGIN & REGISTER ==== */
+    .main {
+        padding: 15px;
+        padding-bottom: 90px;
+    }
 
-.auth-bg {
-    background: linear-gradient(135deg, #0f172a, #020617);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
+    #home h1 {
+        font-size: 22px;
+    }
 
-.auth-box {
-    background: #020617;
-    color: white;
-    padding: 30px;
-    border-radius: 14px;
-    width: 320px;
-    text-align: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-}
+    .stats-box {
+        grid-template-columns: repeat(2, 1fr);
+    }
 
-.auth-box h2 {
-    margin-bottom: 20px;
-}
+    .quick-action button {
+        font-size: 14px;
+    }
 
-.auth-box input, 
-.auth-box button {
-    width: 100%;
-    padding: 12px;
-    margin-top: 12px;
-    border-radius: 8px;
-    border: none;
-}
+    .search {
+        width: 100%;
+    }
 
-.auth-box button {
-    background: #6366f1;
-    color: white;
-    font-weight: bold;
-}
+    form {
+        width: 100%;
+    }
 
-.auth-box p {
-    margin-top: 15px;
-    font-size: 14px;
-}
+    .card button,
+    .del {
+        width: 100%;
+        margin-top: 6px;
+    }
 
-.auth-box a {
-    color: #818cf8;
-    text-decoration: none;
-}
-
-/* ANIMASI */
-.fade {
-    animation: fadeIn 0.5s ease;
-}
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-/* DELETE BUTTON */
-.del {
-    display: inline-block;
-    margin-top: 8px;
-    background: #dc2626;
-    padding: 6px 10px;
-    border-radius: 6px;
-    color: white;
-    text-decoration: none;
-    font-size: 12px;
-}
-
-/* PASSWORD BOX */
-.passbox {
-    position: relative;
-}
-.passbox span {
-    position: absolute;
-    right: 10px;
-    top: 14px;
-    cursor: pointer;
-}
-
-/* INFO DATA PASSWORD */
-.card button {
-    margin-top: 5px;
-    background: #334155;
-}
-
-select {
-    width: 100%;
-    padding: 12px;
-    margin-top: 10px;
-    border-radius: 8px;
-    border: none;
-}
-
-.search {
-    width: 100%;
-    padding: 12px;
-    border-radius: 8px;
-    border: none;
-    margin-bottom: 20px;
-}
-
-.stats-box {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 12px;
-    margin: 20px 0;
-}
-
-.stat {
-    background: #1e293b;
-    padding: 14px;
-    border-radius: 12px;
-    text-align: center;
-}
-
-.quick-action button {
-    margin: 6px 6px 0 0;
-}
-
-.tips {
-    background: #020617;
-    padding: 15px 18px;
-    border-radius: 12px;
-    margin-top: 20px;
-}
-
-.tips ul {
-    padding-left: 18px;
-    margin: 0;
-}
-
-.tips li {
-    margin-bottom: 8px;
-    line-height: 1.4;
-}
-
-.anim {
-    animation: fadeUp 0.4s ease;
-}
-
-@keyframes fadeUp {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    .login-container {
+        width: 90%;
+        margin-top: 60px;
+    }
 }
