@@ -9,6 +9,7 @@ body {
     background: linear-gradient(120deg, #020617, #0f172a);
     color: white;
     min-height: 100vh;
+    position: relative;
 }
 
 /* ================= APP WRAPPER ================= */
@@ -183,15 +184,21 @@ form button {
     color: white;
 }
 
-/* ================= LOGIN ================= */
+/* ================= LOGIN (CENTER FIX FINAL) ================= */
 .login-container {
     width: 100%;
-    max-width: 350px;
+    max-width: 380px;
     background: rgba(255,255,255,0.08);
-    padding: 25px;
-    border-radius: 18px;
-    margin: 80px auto;
+    padding: 28px;
+    border-radius: 20px;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
     text-align: center;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.4);
 }
 
 /* ================= MOBILE MODE ================= */
@@ -210,6 +217,7 @@ form button {
         flex-direction: row;
         justify-content: space-around;
         padding: 10px;
+        z-index: 999;
     }
 
     .sidebar h2 {
@@ -254,6 +262,7 @@ form button {
 
     .login-container {
         width: 90%;
-        margin-top: 60px;
+        max-width: 360px;
+        padding: 22px;
     }
 }
