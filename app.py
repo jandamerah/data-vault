@@ -8,9 +8,6 @@ app.secret_key = "rahasia_brow"
 def db():
     return sqlite3.connect("database.db")
 
-# =========================
-# DATABASE INIT
-# =========================
 with db() as conn:
     c = conn.cursor()
     c.execute("""
@@ -31,9 +28,6 @@ with db() as conn:
         )
     """)
 
-# =========================
-# REGISTER
-# =========================
 @app.route("/", methods=["GET", "POST"])
 @app.route("/register", methods=["GET", "POST"])
 def register():
@@ -52,9 +46,6 @@ def register():
     return render_template("register.html")
 
 
-# =========================
-# LOGIN
-# =========================
 @app.route("/login", methods=["GET", "POST"])
 def login():
     error = None
@@ -79,15 +70,11 @@ def login():
 
     return render_template("login.html", error=error)
 
-# =========================
-# DASHBOARD + ADD GAME DATA
-# =========================
 @app.route("/dashboard", methods=["GET", "POST"])
 def dashboard():
     if "user" not in session:
         return redirect("/login")
 
-    # ADD DATA GAME
     if request.method == "POST":
         kategori = request.form["kategori"]
         judul = request.form["judul"]
@@ -110,9 +97,6 @@ def dashboard():
 
     return render_template("dashboard.html", data=all_data)
 
-# =========================
-# ADD EMAIL DATA (KHUSUS 2 INPUT)
-# =========================
 @app.route("/add-email", methods=["POST"])
 def add_email():
     if "user" not in session:
@@ -130,9 +114,6 @@ def add_email():
 
     return redirect("/dashboard")
 
-# =========================
-# DELETE DATA
-# =========================
 @app.route("/delete/<int:id>")
 def delete(id):
     if "user" not in session:
@@ -146,9 +127,6 @@ def delete(id):
 
     return redirect("/dashboard")
 
-# =========================
-# LOGOUT
-# =========================
 @app.route("/logout")
 def logout():
     session.clear()
@@ -156,6 +134,7 @@ def logout():
 
 if __name__ == "__main__":
     app.run()
+
 
 
 
