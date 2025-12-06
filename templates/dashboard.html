@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Vault</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="app fade">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <h2>DataVault</h2>
+        <a onclick="showHome()">Home</a>
+        <a onclick="showInfo()">Accounts</a>
+        <a onclick="showAdd()">Add Data</a>
+        <a href="/logout" class="logout">Logout</a>
+    </div>
+
+    <!-- MAIN -->
+    <div class="main">
+
+        <!-- ================= HOME ================= -->
+        <div id="home" class="page">
+            <h1>Account Data Storage</h1>
+            <br>
+
+            <p>
+                Account Data Storage is your personal digital vault designed to securely store, manage,
+                and protect all your game and email accounts in one place. With a modern interface and
+                a strong security system, your important digital information is always safe and easy
+                to access anytime, anywhere.
+            </p>
+
+            <p>
+                No more forgotten accounts, no more confusion. Everything is organized, protected,
+                and ready whenever you need it.
+            </p>
+
+            <br>
+
+            <!-- ===== STATISTICS ===== -->
+            <div class="stats-box">
+                <div class="stat">Total Accounts<br><b id="totalCount">0</b></div>
+                <div class="stat">Mobile Legends<br><b id="mlCount">0</b></div>
+                <div class="stat">PUBG<br><b id="pubgCount">0</b></div>
+                <div class="stat">Free Fire<br><b id="ffCount">0</b></div>
+                <div class="stat">Email<br><b id="emailCount">0</b></div>
+            </div>
+
+            <!-- ===== QUICK ACTION ===== -->
+            <div class="quick-action">
+                <button onclick="showAdd()">Add Game Account</button>
+                <button onclick="showAdd()">Add Email Account</button>
+                <button onclick="showInfo()">View All Accounts</button>
+            </div>
+
+            <!-- ===== SECURITY TIPS ===== -->
+            <div class="tips">
+                <h3>Security Tips</h3>
+                <ul>
+                    <li>Use strong and unique passwords.</li>
+                    <li>Never share your login data.</li>
+                    <li>Update your passwords regularly.</li>
+                    <li>Always logout after use.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ================= ACCOUNTS ================= -->
+        <div id="info" class="page">
+            <h1>Account Data</h1>
+
+            <input type="text" id="searchInput" placeholder="Search account..."
+                   onkeyup="searchData()" class="search">
+
+            <br><br>
+
+            <h2>Mobile Legends</h2>
+            {% for d in data %}
+                {% if d[1] == "MobileLegends" %}
+                <div class="card data-card" data-game="MobileLegends">
+                    <b>Username : {{ d[2] }}</b><br>
+                    Email : {{ d[3] }}<br>
+                    <span class="pass">Password : ••••••••</span>
+                    <span class="realpass" style="display:none;">Password : {{ d[4] }}</span>
+                    <button onclick="togglePass(this)">Show</button>
+                    <a href="/delete/{{ d[0] }}" class="del">Delete</a>
+                </div>
+                {% endif %}
+            {% endfor %}
+
+            <br>
+
+            <h2>PUBG</h2>
+            {% for d in data %}
+                {% if d[1] == "PUBG" %}
+                <div class="card data-card" data-game="PUBG">
+                    <b>Username : {{ d[2] }}</b><br>
+                    Email : {{ d[3] }}<br>
+                    <span class="pass">Password : ••••••••</span>
+                    <span class="realpass" style="display:none;">Password : {{ d[4] }}</span>
+                    <button onclick="togglePass(this)">Show</button>
+                    <a href="/delete/{{ d[0] }}" class="del">Delete</a>
+                </div>
+                {% endif %}
+            {% endfor %}
+
+            <br>
+
+            <h2>Free Fire</h2>
+            {% for d in data %}
+                {% if d[1] == "FreeFire" %}
+                <div class="card data-card" data-game="FreeFire">
+                    <b>Username : {{ d[2] }}</b><br>
+                    Email : {{ d[3] }}<br>
+                    <span class="pass">Password : ••••••••</span>
+                    <span class="realpass" style="display:none;">Password : {{ d[4] }}</span>
+                    <button onclick="togglePass(this)">Show</button>
+                    <a href="/delete/{{ d[0] }}" class="del">Delete</a>
+                </div>
+                {% endif %}
+            {% endfor %}
+
+            <br>
+
+            <h2>Email</h2>
+            {% for d in data %}
+                {% if d[1] == "Email" %}
+                <div class="card data-card" data-game="Email">
+                    <b>Email : {{ d[3] }}</b><br>
+                    <span class="pass">Password : ••••••••</span>
+                    <span class="realpass" style="display:none;">Password : {{ d[4] }}</span>
+                    <button onclick="togglePass(this)">Show</button>
+                    <a href="/delete/{{ d[0] }}" class="del">Delete</a>
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        <!-- ================= ADD DATA ================= -->
+        <div id="add" class="page">
+            <h1>Add Game Account</h1>
+
+            <form method="post">
+                <select name="kategori" required>
+                    <option value="">-- Select Game --</option>
+                    <option value="MobileLegends">Mobile Legends</option>
+                    <option value="PUBG">PUBG</option>
+                    <option value="FreeFire">Free Fire</option>
+                </select>
+
+                <input name="judul" placeholder="Account Name" required>
+                <input name="email" placeholder="Email" required>
+
+                <div class="passbox">
+                    <input type="password" name="password" id="passInput" placeholder="Password" required>
+                    <span onclick="toggleInput()">👁️</span>
+                </div>
+
+                <button>Save</button>
+            </form>
+
+            <br><hr><br>
+
+            <h1>Add Email Data</h1>
+
+            <form method="post" action="/add-email">
+                <input name="email" placeholder="Email" required>
+
+                <div class="passbox">
+                    <input type="password" name="password" id="emailPass" placeholder="Password" required>
+                    <span onclick="toggleEmailPass()">👁️</span>
+                </div>
+
+                <button>Save</button>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<!-- ================= SCRIPT ================= -->
+<script>
+function showHome(){ setActive("home") }
+function showInfo(){ setActive("info") }
+function showAdd(){ setActive("add") }
+
+function setActive(id){
+    document.querySelectorAll(".page").forEach(p => p.style.display = "none")
+    document.getElementById(id).style.display = "block"
+}
+
+/* INIT PAGE */
+setActive("home")
+
+function togglePass(btn){
+    let card = btn.parentElement
+    let fake = card.querySelector(".pass")
+    let real = card.querySelector(".realpass")
+
+    fake.style.display = fake.style.display === "none" ? "inline" : "none"
+    real.style.display = real.style.display === "none" ? "inline" : "none"
+}
+
+function toggleInput(){
+    let f = document.getElementById("passInput")
+    f.type = f.type === "password" ? "text" : "password"
+}
+
+function toggleEmailPass(){
+    let f = document.getElementById("emailPass")
+    f.type = f.type === "password" ? "text" : "password"
+}
+
+/* SEARCH */
+function searchData(){
+    let input = document.getElementById("searchInput").value.toLowerCase()
+    let cards = document.getElementsByClassName("data-card")
+
+    for(let i = 0; i < cards.length; i++){
+        let text = cards[i].innerText.toLowerCase()
+        cards[i].style.display = text.includes(input) ? "block" : "none"
+    }
+}
+
+/* STAT COUNTER (PAKAI data-game) */
+let allCards   = document.querySelectorAll(".data-card")
+let mlCards    = document.querySelectorAll(".data-card[data-game='MobileLegends']")
+let pubgCards  = document.querySelectorAll(".data-card[data-game='PUBG']")
+let ffCards    = document.querySelectorAll(".data-card[data-game='FreeFire']")
+let emailCards = document.querySelectorAll(".data-card[data-game='Email']")
+
+document.getElementById("totalCount").innerText  = allCards.length
+document.getElementById("mlCount").innerText     = mlCards.length
+document.getElementById("pubgCount").innerText   = pubgCards.length
+document.getElementById("ffCount").innerText     = ffCards.length
+document.getElementById("emailCount").innerText  = emailCards.length
+</script>
+
+</body>
+</html>

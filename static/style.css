@@ -1,0 +1,254 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial;
+    box-sizing: border-box;
+}
+
+body {
+    background: #0f172a;
+}
+
+.app {
+    display: flex;
+    height: 100vh;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 220px;
+    background: #020617;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar h2 {
+    color: white;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: white;
+    padding: 12px;
+    margin-bottom: 8px;
+    background: #1e293b;
+    border-radius: 8px;
+    transition: 0.2s;
+}
+
+.sidebar a:hover {
+    background: #6366f1;
+}
+
+.logout {
+    margin-top: auto;
+    background: #dc2626 !important;
+}
+
+/* MAIN */
+.main {
+    flex: 1;
+    padding: 30px;
+    color: white;
+}
+
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+.card {
+    background: #1e293b;
+    padding: 12px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+/* FORM */
+input, button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: none;
+}
+
+button {
+    background: #6366f1;
+    color: white;
+    font-weight: bold;
+}
+
+/* RESPONSIVE HP */
+@media (max-width: 768px) {
+    .app {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .sidebar h2 {
+        display: none;
+    }
+
+    .logout {
+        margin-top: 0;
+    }
+}
+
+/* ==== LOGIN & REGISTER ==== */
+
+.auth-bg {
+    background: linear-gradient(135deg, #0f172a, #020617);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.auth-box {
+    background: #020617;
+    color: white;
+    padding: 30px;
+    border-radius: 14px;
+    width: 320px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.auth-box h2 {
+    margin-bottom: 20px;
+}
+
+.auth-box input, 
+.auth-box button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 12px;
+    border-radius: 8px;
+    border: none;
+}
+
+.auth-box button {
+    background: #6366f1;
+    color: white;
+    font-weight: bold;
+}
+
+.auth-box p {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.auth-box a {
+    color: #818cf8;
+    text-decoration: none;
+}
+
+/* ANIMASI */
+.fade {
+    animation: fadeIn 0.5s ease;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* DELETE BUTTON */
+.del {
+    display: inline-block;
+    margin-top: 8px;
+    background: #dc2626;
+    padding: 6px 10px;
+    border-radius: 6px;
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+/* PASSWORD BOX */
+.passbox {
+    position: relative;
+}
+.passbox span {
+    position: absolute;
+    right: 10px;
+    top: 14px;
+    cursor: pointer;
+}
+
+/* INFO DATA PASSWORD */
+.card button {
+    margin-top: 5px;
+    background: #334155;
+}
+
+select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: none;
+}
+
+.search {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    margin-bottom: 20px;
+}
+
+.stats-box {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.stat {
+    background: #1e293b;
+    padding: 14px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.quick-action button {
+    margin: 6px 6px 0 0;
+}
+
+.tips {
+    background: #020617;
+    padding: 15px 18px;
+    border-radius: 12px;
+    margin-top: 20px;
+}
+
+.tips ul {
+    padding-left: 18px;
+    margin: 0;
+}
+
+.tips li {
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.anim {
+    animation: fadeUp 0.4s ease;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
